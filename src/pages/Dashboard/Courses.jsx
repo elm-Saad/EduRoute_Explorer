@@ -1,10 +1,9 @@
-// import { JobsContainer, SearchContainer } from '../../components'
+import { CoursesContainer, SearchContainer } from '../../components'
 
 const Courses  = () =>{
     return <>
-        {/* <SearchContainer />
-        <JobsContainer /> */}
-        courses
+        {/* <SearchContainer /> */}
+        <CoursesContainer />
     </>
 }
 export default Courses 

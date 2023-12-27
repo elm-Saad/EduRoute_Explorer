@@ -1,6 +1,6 @@
 import { FormRow, FormRowSelect } from '.'
 import { useSelector, useDispatch } from 'react-redux'
-import { clearFilters,handleChange } from '../features/allJobs/allJobsSlice'
+import { clearFilters,handleChange } from '../features/allCourses/allCoursesSlice'
 import {useState, useMemo} from 'react'
 
 

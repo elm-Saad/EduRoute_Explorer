@@ -1,131 +1,137 @@
-// import { FormRow, FormRowSelect } from '../../components'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { toast } from 'react-toastify'
-// import { handleChange,clearValues ,createJob,editJobu} from '../../features/job/jobSlice'
-// import { useEffect } from 'react'
+import { FormRow, FormRowSelect, SubmitBtn } from '../../components'
+import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
+import { handleChange,clearValues ,createJob,setEditJob} from '../../features/course/courseSlice'
+import { useEffect } from 'react'
+import { courseTypeOptionsMIM, statusOptionsMIM } from '../../utils/mimic'
 
 const AddCourse  = () =>{
-    // const {
-    //     isLoading,
-    //     position,
-    //     company,
-    //     jobLocation,
-    //     jobType,
-    //     jobTypeOptions,
-    //     status,
-    //     statusOptions,
-    //     isEditing,
-    //     editJobId,
-    // } = useSelector((store) => store.job)
+    const {
+        isLoading,
+        position,
+        company,
+        jobLocation,
+        jobType,
+        jobTypeOptions,
+        status,
+        statusOptions,
+        isEditing,
+        editJobId,
+    } = useSelector((store) => store.course)
 
-    // const dispatch = useDispatch()
+   // mimic 
+    const dispatch = useDispatch()
 
     // // set user job as default job for application location
 
-    // const {user}= useSelector((store)=> store.user)
+    const {user}= useSelector((store)=> store.user)
     
     // useEffect(()=>{
     //     // if the user edit a job 
-    //     if(!isEditing)
+        // if(!isEditing)
     //     dispatch(handleChange({name:'jobLocation',value:user?.location || 'world'}))
     // },[])
 
-    // const handleSubmit = (e)=>{
-    // e.preventDefault()
-    // if(!position||!company||!jobLocation){
-    //     toast.error('please fill out all fields')
-    //     return 
-    // }
-    // // Create job || // edit job
-    // if(isEditing){
-    //     dispatch(editJobu({
-    //         jobId:editJobId,
-    //         job: {
-    //             position,
-    //             company,
-    //             jobLocation,
-    //             jobType,
-    //             status,
-    //         }
-    //     }))
-    // }else{
-    //     dispatch(createJob({ position, company, jobLocation, jobType, status }))
-    // }
-    // }
+    const handleSubmit = (e)=>{
+    e.preventDefault()
+    if(!position||!company||!jobLocation){
+        toast.error('please fill out all fields')
+        return 
+    }
+    // Create job || // edit job
+    if(isEditing){
+        // dispatch(setEditJob({
+        //     jobId:editJobId,
+        //     job: {
+        //         position,
+        //         company,
+        //         jobLocation,
+        //         jobType,
+        //         status,
+        //     }
+        // }))
+    }else{
+        dispatch(createJob({ position, company, jobLocation, jobType, status }))
+    }
+    }
 
 
-    // const handleJobInputs = (e)=>{
-    // const name = e.target.name
-    // const value = e.target.value
-    // // handle change from the jobSlice (other option)
-    // dispatch(handleChange({name,value}))
-    // }
+    const handleCourseInputs = (e)=>{
+        const name = e.target.name
+        const value = e.target.value
+        dispatch(handleChange({name,value}))
+    }
 
-    // const clearJobs = ()=>{
-    //     dispatch(clearValues())
-    // }
+    const clearCourses = ()=>{
+        dispatch(clearValues())
+    }
 
       
     return <>
 
         <form className='form'>
-            {/* <h3>{isEditing ? 'edit job' : 'add job'}</h3> */}
-            Hi Form Add courses
-            <div className='form-center'>
-                {/* position */}
-                {/* <FormRow
+            <h3 className='text-xl font-semibold '>{isEditing ? 'Edit course' : 'Add course'}</h3>
+            <div className='py-10 px-10 md:px-28 form-control gap-4'>
+                {/* name */}
+                <FormRow
                     type='text'
+                    labelText='name'
+                    placeholder='course name'
                     name='position'
                     value={position}
-                    handleChange={handleJobInputs}
-                /> */}
-                {/* company */}
-                {/* <FormRow
+                    handleChange={handleCourseInputs}
+                />
+                {/* instructor */}
+                <FormRow
                     type='text'
+                    labelText='instructor'
+                    placeholder='instructor'
                     name='company'
                     value={company}
-                    handleChange={handleJobInputs}
-                /> */}
-                {/* location */}
-                {/* <FormRow
+                    handleChange={handleCourseInputs}
+                />
+                {/* Gol */}
+                <FormRow
                     type='text'
-                    labelText='job location'
+                    labelText='course gol'
+                    placeholder='React, Javascript, Laravel, C++'
                     name='jobLocation'
                     value={jobLocation}
-                    handleChange={handleJobInputs}
-                /> */}
-                {/* job status */}
-                {/* <FormRowSelect
+                    handleChange={handleCourseInputs}
+                />
+                {/* course status */}
+                <FormRowSelect
                     name='status'
                     value={status}
-                    handleChange={handleJobInputs}
-                    list={statusOptions}
-                /> */}
-                {/* job type */}
-                {/* <FormRowSelect
+                    handleChange={handleCourseInputs}
+                    list={statusOptionsMIM}
+                />
+                {/* course time */}
+                <FormRowSelect
                     name='jobType'
-                    labelText='job type'
+                    labelText='course time'
                     value={jobType}
-                    handleChange={handleJobInputs}
-                    list={jobTypeOptions}
-                /> */}
+                    handleChange={handleCourseInputs}
+                    list={courseTypeOptionsMIM}
+                />
                 {/* btn container */}
-                <div className='btn-container'>
-                    {/* <button
+                
+                <div className='form-control gap-4'>
+                    <button
                         type='button'
-                        className='btn btn-block clear-btn'
-                        onClick={clearJobs}
+                        className='btn btn-block'
+                        onClick={clearCourses}
                     >
                         clear
                     </button>
                     <button
                         type='submit'
-                        className='btn btn-block submit-btn'
+                        className='btn btn-block'
                         onClick={handleSubmit}
                         disabled={isLoading}
                     >
                         submit
-                    </button> */}
+                    </button>
                 </div>
             </div>
         </form>

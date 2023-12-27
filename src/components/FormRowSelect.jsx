@@ -3,7 +3,7 @@
 
 const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
     return (
-      <div className='form-row'>
+      <div className='form-control gap-2'>
         <label htmlFor={name} className='form-label'>
           {labelText || name}
         </label>
@@ -12,7 +12,7 @@ const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
           value={value}
           id={name}
           onChange={handleChange}
-          className='form-select'
+          className='select select-bordered w-full max-w-xs'
         >
           {list.map((itemValue, index) => {
             return (

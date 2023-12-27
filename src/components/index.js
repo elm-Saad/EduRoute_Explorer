@@ -10,7 +10,7 @@ export {default as Navbar} from './Navbar'
 export {default as NavLinks} from './NavLinks'
 export {default as FormRowSelect} from './FormRowSelect'
 
-export {default as JobsContainer} from './JobsContainer'
+export {default as CoursesContainer} from './CoursesContainer'
 export {default as SearchContainer} from './SearchContainer'
 
 export {default as ChartsContainer} from './ChartsContainer'

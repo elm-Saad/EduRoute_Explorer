@@ -1,16 +1,11 @@
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi'
 import { useSelector, useDispatch } from 'react-redux'
-import { changePage } from '../features/allJobs/allJobsSlice'
+import { changePage } from '../features/allCourses/allCoursesSlice'
 
 const PageBtnContainer = ()=>{
     const {numOfPages,page} = useSelector((store)=>store.allJobs)
     const dispatch = useDispatch()
 
-    /**
-     * https://www.google.com/search?q=erator+(range)&sourceid=chrome&ie=UTF-8
-     * 
-     * return a range 
-     */
     const pages = Array.from({ length: numOfPages }, (_, index) => {
         return index + 1
       })

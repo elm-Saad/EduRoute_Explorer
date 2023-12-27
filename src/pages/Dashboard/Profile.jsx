@@ -78,6 +78,7 @@ const Profile  = () =>{
                 <div className="md:px-10 py-2">
                     <FormRow
                         type='text'
+                        labelText='role'
                         name='location'
                         value={userData.location}
                         handleChange={handleChange}

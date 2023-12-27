@@ -1,27 +1,27 @@
-import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import JobInfo from './JobInfo'
-// import moment from 'moment'
-import { editJob, deleteJob } from '../features/job/jobSlice';
+// import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa'
+// import { Link } from 'react-router-dom'
+// import { useDispatch } from 'react-redux'
+// import JobInfo from './JobInfo'
+// // import moment from 'moment'
+// import { editJob, deleteJob } from '../features/job/jobSlice';
 
 const Job = ({_id,position,company,jobLocation,jobType,createdAt,status,})=>{
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    // const date = moment(createdAt).format('MMM Do, YYYY')
-    const date = 'MMM Do, YYYY'
+    // // const date = moment(createdAt).format('MMM Do, YYYY')
+    // const date = 'MMM Do, YYYY'
 
 
-    const DeleteJob = ()=>{
-      dispatch(deleteJob(_id))
-    }
-    const EditJob = ()=>{
-      dispatch(editJob({editJobId:_id,position,company,jobLocation,jobType,status}))
-    }
+    // const DeleteJob = ()=>{
+    //   dispatch(deleteJob(_id))
+    // }
+    // const EditJob = ()=>{
+    //   dispatch(editJob({editJobId:_id,position,company,jobLocation,jobType,status}))
+    // }
     return (
         <>
-          <header>
+          {/* <header>
             <div className='main-icon'>{company.charAt(0)}</div>
             <div className='info'>
               <h5>{position}</h5>
@@ -53,7 +53,8 @@ const Job = ({_id,position,company,jobLocation,jobType,createdAt,status,})=>{
                 </button>
               </div>
             </footer>
-          </div>
+          </div> */}
+          job
         </>
     )
 }

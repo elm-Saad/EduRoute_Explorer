@@ -2,20 +2,20 @@ import { useEffect } from 'react'
 import Job from './Job'
 import { useSelector, useDispatch } from 'react-redux'
 import Loading from './Loading'
-import { getAllJobs } from '../features/allJobs/allJobsSlice'
+import { getAllCourses } from '../features/allCourses/allCoursesSlice'
 import PageBtnContainer from './PageBtnContainer'
 
 
 
 
-const JobsContainer = ()=>{
+const CoursesContainer = ()=>{
     const {jobs,isLoading,totalJobs, numOfPages,page,search,searchStatus,searchType,sort} = useSelector((store)=>store.allJobs)
 
     const dispatch = useDispatch()
 
     
     useEffect(()=>{
-        dispatch(getAllJobs())
+        dispatch(getAllCourses())
     },[page,search,searchType,searchStatus,sort])
 
 
@@ -38,7 +38,7 @@ const JobsContainer = ()=>{
     
 
     return <>
-        <h5>{totalJobs} job{jobs.length > 1 && 's'} found</h5>
+        <h5>{totalJobs} course{jobs.length > 1 && 's'} found</h5>
         <div className='jobs'>
             {jobs.map((job) => {
                 return <Job key={job._id} {...job} />;
@@ -48,4 +48,4 @@ const JobsContainer = ()=>{
     </>
 }
 
-export default JobsContainer
+export default CoursesContainer

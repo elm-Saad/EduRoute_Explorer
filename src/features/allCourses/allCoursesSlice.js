@@ -26,10 +26,10 @@ const initialState = {
 
 
 
-export const getAllJobs = createAsyncThunk(
-  'allJobs_getJobs',
+export const getAllCourses = createAsyncThunk(
+  'allCourses_getCourses',
   async(_,thunkAPI)=>{
-    const {page, search, searchStatus, searchType, sort } = thunkAPI.getState().allJobs
+    const {page, search, searchStatus, searchType, sort } = thunkAPI.getState().allCourses
 
     let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`
 
@@ -43,42 +43,39 @@ export const getAllJobs = createAsyncThunk(
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
       })
-      return resp.data // return all jobs data
+      return resp.data 
     } catch (error) {
-      //base error
-      // return thunkAPI.rejectWithValue(error.response.data.msg)
-      //for 401 and base error
       return checkForUnauthorizedResponse(error, thunkAPI)
     }
   }
 )
-export const showStats = createAsyncThunk(
-  'allJobs_showStats',
-  async (_, thunkAPI) => {
-    try {
-      const res = await customFetch.get('/jobs/stats',{
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      })
-      console.log(res.data)
+// export const showStats = createAsyncThunk(
+//   'allJobs_showStats',
+//   async (_, thunkAPI) => {
+//     try {
+//       const res = await customFetch.get('/jobs/stats',{
+//         headers: {
+//           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+//         },
+//       })
+//       console.log(res.data)
 
-      return res.data
-    } catch (error) {
-      //base error
-      // return thunkAPI.rejectWithValue(error.response.data.msg)
-      //for 401 and base error
-      return checkForUnauthorizedResponse(error, thunkAPI)
-    }
-  }
-)
+//       return res.data
+//     } catch (error) {
+//       //base error
+//       // return thunkAPI.rejectWithValue(error.response.data.msg)
+//       //for 401 and base error
+//       return checkForUnauthorizedResponse(error, thunkAPI)
+//     }
+//   }
+// )
 
 
    
 
 
-const allJobSlice = createSlice({
-  name:'allJobs',
+const allCoursesSlice = createSlice({
+  name:'allCourses',
   initialState,
   reducers:{
     showLoading: (state) => {
@@ -100,14 +97,14 @@ const allJobSlice = createSlice({
       state.page = payload
       
     },
-    clearAllJobsState: () => initialState,
+    clearAllCoursesStats: () => initialState,
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getAllJobs.pending, (state) => {
+      .addCase(getAllCourses.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(getAllJobs.fulfilled, (state,{payload}) => {
+      .addCase(getAllCourses.fulfilled, (state,{payload}) => {
         state.isLoading = false
         state.jobs = payload.jobs
         // pagination
@@ -115,25 +112,25 @@ const allJobSlice = createSlice({
         state.totalJobs = payload.totalJobs
         
       })
-      .addCase(getAllJobs.rejected, (state, {payload}) => {
+      .addCase(getAllCourses.rejected, (state, {payload}) => {
         state.isLoading = false
         toast.error(payload)
       })
-      .addCase(showStats.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(showStats.fulfilled, (state,{payload}) => {
-        state.isLoading = false
-        state.stats = payload.defaultStats
-        state.monthlyApplications = payload.monthlyApplications
-      })
-      .addCase(showStats.rejected, (state, {payload}) => {
-        state.isLoading = false
-        toast.error(payload)
-      })
+      // .addCase(showStats.pending, (state) => {
+      //   state.isLoading = true
+      // })
+      // .addCase(showStats.fulfilled, (state,{payload}) => {
+      //   state.isLoading = false
+      //   state.stats = payload.defaultStats
+      //   state.monthlyApplications = payload.monthlyApplications
+      // })
+      // .addCase(showStats.rejected, (state, {payload}) => {
+      //   state.isLoading = false
+      //   toast.error(payload)
+      // })
 },
 })
 
-export const {showLoading,hideLoading,handleChange,clearFilters,changePage,clearAllJobsState} = allJobSlice.actions
+export const {showLoading,hideLoading,handleChange,clearFilters,changePage,clearAllCoursesStats} = allCoursesSlice.actions
 
-export default allJobSlice.reducer
+export default allCoursesSlice.reducer
