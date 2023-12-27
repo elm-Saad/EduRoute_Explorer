@@ -41,38 +41,25 @@ export const LoginUser = createAsyncThunk(
     }
 )
 
-/*
+
 export const UpdateUser = createAsyncThunk(
   'user_updateUser',
   async(user,thunkAPI)=>{
     try {
-      //get the token and pass is to headers as this for uniq identifier
+     
       const resp = await customFetch.patch('/auth/updateUser', user, {
         headers:{
-          //.....user /name of store /.user /name of prop /....
           Authorization:`Bearer ${thunkAPI.getState().user.user.token}`,
         }
 
       })
       return resp.data
     } catch (error) {  
-      // 570 video handle old token /expired token
-      // if (error.response.status === 401) {
-      //   thunkAPI.dispatch(logoutUser())
-      //   return thunkAPI.rejectWithValue('Unauthorized! Logging Out...')
-      // }
-
-      // return thunkAPI.rejectWithValue(error.response.data.msg)
-
-
-      //base error
-      // return thunkAPI.rejectWithValue(error.response.data.msg)
-      //for 401 and base error
       return checkForUnauthorizedResponse(error, thunkAPI)
     }
   }
 )
-*/
+
 export const clearStore = createAsyncThunk(
   'user_clearStore',
   async (message, thunkAPI) => {
@@ -120,12 +107,10 @@ const userSlice = createSlice({
           })
           .addCase(RegisterUser.fulfilled, (state, action) => {
             const { user } = action.payload 
-            //add user to local storage
             addToLocalStorage(user)
             state.isLoading = false
             state.user = user
             toast.success(`hello there ${user.name}`)
-            // get the token from here user.token
           })
           .addCase(RegisterUser.rejected, (state, action) => {
             state.isLoading = false
@@ -136,12 +121,10 @@ const userSlice = createSlice({
           })
           .addCase(LoginUser.fulfilled, (state, action) => {
             const { user } = action.payload   
-            //add user to local storage
             addToLocalStorage(user)         
             state.isLoading = false
             state.user = user
             toast.success(`welcome back ${user.name}`)
-            // get the token from here user.token
           })
           .addCase(LoginUser.rejected, (state, action) => {
             state.isLoading = false
@@ -150,22 +133,20 @@ const userSlice = createSlice({
           .addCase(clearStore.rejected, (state, action) => {
             toast.error('There was an Error...')
           })
-          // .addCase(UpdateUser.pending, (state) => {
-          //   state.isLoading = true
-          // })
-          // .addCase(UpdateUser.fulfilled, (state, action) => {
-          //   const { user } = action.payload   
-          //   //add user to local storage
-          //   addToLocalStorage(user)         
-          //   state.isLoading = false
-          //   state.user = user
-          //   toast.success(`User Updated`)
-          //   // get the token from here user.token
-          // })
-          // .addCase(UpdateUser.rejected, (state, action) => {
-          //   state.isLoading = false
-          //   toast.error(action.payload)
-          // })
+          .addCase(UpdateUser.pending, (state) => {
+            state.isLoading = true
+          })
+          .addCase(UpdateUser.fulfilled, (state, action) => {
+            const { user } = action.payload   
+            addToLocalStorage(user)         
+            state.isLoading = false
+            state.user = user
+            toast.success(`User Updated`)
+          })
+          .addCase(UpdateUser.rejected, (state, action) => {
+            state.isLoading = false
+            toast.error(action.payload)
+          })
           
     },
 })

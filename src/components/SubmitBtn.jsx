@@ -1,7 +1,7 @@
 
 
 
-const SubmitBtn = ({isLoading})=>{
+const SubmitBtn = ({isLoading,text='Submit'})=>{
     return <>
     {
         isLoading?
@@ -18,7 +18,7 @@ const SubmitBtn = ({isLoading})=>{
             className='btn'
             disabled={isLoading}
         >
-         Submit
+         {text}
         </button>
     }
         </>
