@@ -7,7 +7,7 @@ const NavLinks = ({ toggleSidebar }) => {
       {links.map((link) => {
         const { text, path, id, icon } = link
 
-        return <li className='bg-blue-300 my-2 rounded-md '>
+        return <li className='bg-blue-300 my-2 rounded-md btn w-full'>
             <NavLink
               to={path}
               key={id}
