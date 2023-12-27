@@ -7,7 +7,7 @@ const NavLinks = ({ toggleSidebar }) => {
       {links.map((link) => {
         const { text, path, id, icon } = link
 
-        return <li className='bg-blue-300 my-2 rounded-md btn w-full'>
+        return <li className='bg-blue-300 my-2 rounded-md btn w-full justify-start'>
             <NavLink
               to={path}
               key={id}
@@ -17,7 +17,7 @@ const NavLinks = ({ toggleSidebar }) => {
               }
             >
               <div className='py-2 px-4 gap-2 flex items-center justify-start'>
-                <span className='icon'>{icon}</span>
+                <span className='text-lg md:text-xl'>{icon}</span>
                 <span className='hidden md:block'>{text}</span>
               </div>
             </NavLink>
