@@ -10,7 +10,7 @@ import { addToLocalStorage, getFromLocalStorage,removeFromLocalStorage } from '.
 
 const initialState = {
   isLoading:false,
-  isSidebarOpen:false,
+  isSidebarOpen:true,
   user:getFromLocalStorage()
 }
 

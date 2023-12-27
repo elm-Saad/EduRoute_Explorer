@@ -21,7 +21,9 @@ import {
 const routes = createBrowserRouter([
   {
     path:'/',
-    element:<SharedLayout />,
+    element:<ProtectedRoute>
+      <SharedLayout />
+    </ProtectedRoute>,
     errorElement:<Error />,
     children: [
       {

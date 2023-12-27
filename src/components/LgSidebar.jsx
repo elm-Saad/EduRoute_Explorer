@@ -1,13 +1,11 @@
 import NavLinks from './NavLinks'
 import Logo from './Logo'
-import { useSelector } from 'react-redux'
 
 
 
 const LgSidebar = ()=>{
-    // const {isSidebarOpen} = useSelector((store)=>store.user)
 
-    return  <div class="bg-white  min-h-screen w-full py-5 px-2 md:px-5">
+    return  <div class="bg-white  min-h-screen w-full py-5 px-2 md:px-2">
         <header className='text-center mb-5'>
           <Logo />
         </header>
