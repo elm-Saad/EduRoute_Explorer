@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import { FormRow } from '../../components'
-import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
-import { UpdateUser } from '../../features/user/userSlice'
+// import { useState } from 'react'
+// import { FormRow } from '../../components'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { toast } from 'react-toastify'
+// import { UpdateUser } from '../../features/user/userSlice'
 
 const Profile  = () =>{
     // const {isLoading,user} = useSelector((store)=>store.user)

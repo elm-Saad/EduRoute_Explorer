@@ -3,8 +3,10 @@ import { toast } from 'react-toastify'
 
 import customFetch,{checkForUnauthorizedResponse} from '../../utils/axios'
 import { addToLocalStorage, getFromLocalStorage,removeFromLocalStorage } from '../../utils/localStorage'
-import { clearAllJobsState } from '../allJobs/allJobsSlice'
-import { clearValues } from '../job/jobSlice'
+
+/** */
+// import { clearAllJobsState } from '../allJobs/allJobsSlice'
+// import { clearValues } from '../job/jobSlice'
 
 const initialState = {
   isLoading:false,
@@ -39,6 +41,7 @@ export const LoginUser = createAsyncThunk(
     }
 )
 
+/*
 export const UpdateUser = createAsyncThunk(
   'user_updateUser',
   async(user,thunkAPI)=>{
@@ -46,7 +49,7 @@ export const UpdateUser = createAsyncThunk(
       //get the token and pass is to headers as this for uniq identifier
       const resp = await customFetch.patch('/auth/updateUser', user, {
         headers:{
-          //.....user/**name of store */.user/**name of prop */....
+          //.....user /name of store /.user /name of prop /....
           Authorization:`Bearer ${thunkAPI.getState().user.user.token}`,
         }
 
@@ -69,23 +72,24 @@ export const UpdateUser = createAsyncThunk(
     }
   }
 )
-
+*/
 export const clearStore = createAsyncThunk(
   'user_clearStore',
   async (message, thunkAPI) => {
     try {
       // logout user
       thunkAPI.dispatch(logoutUser(message))
-      // clear jobs value
-      thunkAPI.dispatch(clearAllJobsState())
-      // clear job input values
-      thunkAPI.dispatch(clearValues())
+      // // clear jobs value
+      // thunkAPI.dispatch(clearAllJobsState())
+      // // clear job input values
+      // thunkAPI.dispatch(clearValues())
       return Promise.resolve()
     } catch (error) {
       return Promise.reject()
     }
   }
 )
+
 
 
 
@@ -101,7 +105,7 @@ const userSlice = createSlice({
         state.isSidebarOpen=false
         removeFromLocalStorage()
 
-        //582
+        //
         if(payload){
           toast.success(payload)
         }
@@ -143,25 +147,26 @@ const userSlice = createSlice({
             state.isLoading = false
             toast.error(action.payload)
           })
-          .addCase(UpdateUser.pending, (state) => {
-            state.isLoading = true
-          })
-          .addCase(UpdateUser.fulfilled, (state, action) => {
-            const { user } = action.payload   
-            //add user to local storage
-            addToLocalStorage(user)         
-            state.isLoading = false
-            state.user = user
-            toast.success(`User Updated`)
-            // get the token from here user.token
-          })
-          .addCase(UpdateUser.rejected, (state, action) => {
-            state.isLoading = false
-            toast.error(action.payload)
-          })
           .addCase(clearStore.rejected, (state, action) => {
             toast.error('There was an Error...')
           })
+          // .addCase(UpdateUser.pending, (state) => {
+          //   state.isLoading = true
+          // })
+          // .addCase(UpdateUser.fulfilled, (state, action) => {
+          //   const { user } = action.payload   
+          //   //add user to local storage
+          //   addToLocalStorage(user)         
+          //   state.isLoading = false
+          //   state.user = user
+          //   toast.success(`User Updated`)
+          //   // get the token from here user.token
+          // })
+          // .addCase(UpdateUser.rejected, (state, action) => {
+          //   state.isLoading = false
+          //   toast.error(action.payload)
+          // })
+          
     },
 })
 

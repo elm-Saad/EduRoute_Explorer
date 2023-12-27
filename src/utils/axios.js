@@ -1,5 +1,5 @@
 import axios from "axios"
-import { clearStore } from "../features/user/userSlice";
+import { clearStore } from "../features/user/userSlice"
 
 
 const customFetch = axios.create({
@@ -7,7 +7,7 @@ const customFetch = axios.create({
 })
 
 
-// for all
+// base error & 401  handle
 export const checkForUnauthorizedResponse = (error, thunkAPI) => {
     if (error.response.status === 401) {
       thunkAPI.dispatch(clearStore())

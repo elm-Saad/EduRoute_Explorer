@@ -69,7 +69,18 @@ function App() {
   return (
    <>
     <RouterProvider router={routes} />
-    <ToastContainer />
+    <ToastContainer
+      position="top-center"
+      autoClose={2000}
+      hideProgressBar
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+    />
    </>
   )
 }
