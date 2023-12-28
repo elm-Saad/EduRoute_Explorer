@@ -35,28 +35,25 @@ export const createCourse = createAsyncThunk(
     }
   }
 )
-// export const deleteJob = createAsyncThunk(
-//   'job_deleteJob',
-//     async(id,thunkAPI)=>{
-//       try {
-//         //Delete a data
-//         const resp = await customFetch.delete(`/jobs/${id}`, {
-//           headers: {
-//             authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-//           },
-//         })
-//         //Refetch the all the data
-//         thunkAPI.dispatch(getAllJobs())
-//         return resp.data.msg
-//       } catch (error) {
-//         thunkAPI.dispatch(hideLoading())
-//          //base error
-//         // return thunkAPI.rejectWithValue(error.response.data.msg)
-//         //for 401 and base error
-//         return checkForUnauthorizedResponse(error, thunkAPI)
-//       }
-//     }
-// )
+export const deleteCourse = createAsyncThunk(
+  'course_deleteCourse',
+    async(id,thunkAPI)=>{
+      try {
+        //Delete a data
+        const resp = await customFetch.delete(`/jobs/${id}`, {
+          headers: {
+            authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+          },
+        })
+        //Refetch the all the data
+        thunkAPI.dispatch(getAllCourses())
+        return resp.data.msg
+      } catch (error) {
+        thunkAPI.dispatch(hideLoading())
+        return checkForUnauthorizedResponse(error, thunkAPI)
+      }
+    }
+)
 
 
 export const editCourse = createAsyncThunk(
@@ -78,7 +75,7 @@ export const editCourse = createAsyncThunk(
 )
 
 
-const allCourseSlice = createSlice({
+const CourseSlice = createSlice({
     name:'course',
     initialState,
     reducers:{
@@ -120,19 +117,22 @@ const allCourseSlice = createSlice({
           state.isLoading = false
           toast.error(payload)
         })
-        // .addCase(deleteJob.fulfilled, (state, {payload}) => {
-        //   state.isLoading = false
-        //   toast.success(payload)
-        // })
-        // .addCase(deleteJob.rejected, (state, {payload}) => {
-        //   state.isLoading = false
-        //   toast.error(payload)
-        // })
+        .addCase(deleteCourse.pending, (state) => {
+          state.isLoading = true
+        })
+        .addCase(deleteCourse.fulfilled, (state, {payload}) => {
+          state.isLoading = false
+          toast.success(payload)
+        })
+        .addCase(deleteCourse.rejected, (state, {payload}) => {
+          state.isLoading = false
+          toast.error(payload)
+        })
         
   },
 })
 
 
-export const {handleChange,clearValues,setEditCourse} = allCourseSlice.actions
+export const {handleChange,clearValues,setEditCourse} = CourseSlice.actions
 
-export default allCourseSlice.reducer
+export default CourseSlice.reducer

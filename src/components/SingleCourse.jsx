@@ -2,19 +2,20 @@ import { Link } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
 import moment from 'moment'
 import { statusOptionsMIM, courseTypeOptionsMIM } from '../utils/mimic'
-import { editCourse, setEditCourse } from '../features/course/courseSlice'
+import { deleteCourse, setEditCourse } from '../features/course/courseSlice'
 
 const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status,})=>{
 
-    const { jobTypeOptions, statusOptions } = useSelector((store) => store.course)
+    const { jobTypeOptions, statusOptions,isLoading } = useSelector((store) => store.course)
+
     const dispatch = useDispatch()
 
     const date = moment(createdAt).format('MMM Do, YYYY')
 
 
-    // const DeleteJob = ()=>{
-    //   dispatch(deleteJob(_id))
-    // }
+    const DeleteCourse = ()=>{
+      dispatch(deleteCourse(_id))
+    }
 
     const EditCourse = ()=>{
       dispatch(setEditCourse({editJobId:_id,position,company,jobLocation,jobType,status}))
@@ -77,7 +78,8 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
               <button
                 type='button'
                 className='btn btn-neutral'
-                // onClick={DeleteJob}
+                onClick={DeleteCourse}
+                disabled={isLoading}
               >
                 Delete
               </button>
