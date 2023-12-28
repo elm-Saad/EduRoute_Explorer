@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import Job from './Job'
+import SingleCourse from './SingleCourse'
 import { useSelector, useDispatch } from 'react-redux'
 import Loading from './Loading'
 import { getAllCourses } from '../features/allCourses/allCoursesSlice'
@@ -9,7 +9,7 @@ import PageBtnContainer from './PageBtnContainer'
 
 
 const CoursesContainer = ()=>{
-    const {jobs,isLoading,totalJobs, numOfPages,page,search,searchStatus,searchType,sort} = useSelector((store)=>store.allJobs)
+    const {jobs,isLoading,totalJobs, numOfPages,page,search,searchStatus,searchType,sort} = useSelector((store)=>store.allCourses)
 
     const dispatch = useDispatch()
 
@@ -20,18 +20,15 @@ const CoursesContainer = ()=>{
 
 
     if(isLoading){
-        return (
-            <>
+        return <>
                 <Loading center />
             </>
-        )
+        
     }
     if(jobs.length === 0 ){
-        return (
-            <>
-                <h2>No jobs...</h2>
-            </>
-        )
+        return  <main className='min-h-screen flex items-center justify-center'>
+                <h2 className='font-semibold text-2xl '>No courses...</h2>
+            </main>
     }
 
 
@@ -39,11 +36,13 @@ const CoursesContainer = ()=>{
 
     return <>
         <h5>{totalJobs} course{jobs.length > 1 && 's'} found</h5>
-        <div className='jobs'>
+        <section 
+            className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
+        >
             {jobs.map((job) => {
-                return <Job key={job._id} {...job} />;
+                return <SingleCourse key={job._id} {...job} />
             })}
-        </div>
+        </section>
         {numOfPages > 1 && <PageBtnContainer />}
     </>
 }

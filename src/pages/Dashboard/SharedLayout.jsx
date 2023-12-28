@@ -14,7 +14,7 @@ const SharedLayout  = () =>{
           </section>
           <section className="w-full bg-white">
             <Navbar />
-            <article className='p-10'>
+            <article className='p-10 bg-[#f1f5f9]'>
               <Outlet />
             </article>
           </section>

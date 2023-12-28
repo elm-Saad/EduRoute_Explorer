@@ -7,6 +7,6 @@ export const store = configureStore({
     reducer: {
         user:userSlice,
         course:courseSlice,
-        allJobs:allCourseSlice
+        allCourses:allCourseSlice
     }
 })
