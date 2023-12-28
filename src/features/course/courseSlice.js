@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 import customFetch, {checkForUnauthorizedResponse} from '../../utils/axios'
 import { getFromLocalStorage } from '../../utils/localStorage'
+import { getAllCourses, hideLoading } from '../allCourses/allCoursesSlice'
 
 const initialState = {
   isLoading: false,
@@ -54,8 +55,6 @@ export const deleteCourse = createAsyncThunk(
       }
     }
 )
-
-
 export const editCourse = createAsyncThunk(
   'Courses_editCourse',
   async({jobId,job},thunkAPI)=>{
@@ -111,7 +110,7 @@ const CourseSlice = createSlice({
         })
         .addCase(editCourse.fulfilled, (state) => {
           state.isLoading = false
-          toast.success('Course updated')
+          toast.success('Course Updated')
         })
         .addCase(editCourse.rejected, (state, {payload}) => {
           state.isLoading = false
@@ -122,7 +121,7 @@ const CourseSlice = createSlice({
         })
         .addCase(deleteCourse.fulfilled, (state, {payload}) => {
           state.isLoading = false
-          toast.success(payload)
+          toast.success('Course Deleted')
         })
         .addCase(deleteCourse.rejected, (state, {payload}) => {
           state.isLoading = false

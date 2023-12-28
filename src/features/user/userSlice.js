@@ -3,6 +3,8 @@ import { toast } from 'react-toastify'
 
 import customFetch,{checkForUnauthorizedResponse} from '../../utils/axios'
 import { addToLocalStorage, getFromLocalStorage,removeFromLocalStorage } from '../../utils/localStorage'
+import { clearAllCoursesStats } from '../allCourses/allCoursesSlice'
+import { clearValues } from '../course/courseSlice'
 
 /** */
 // import { clearAllJobsState } from '../allJobs/allJobsSlice'
@@ -66,10 +68,10 @@ export const clearStore = createAsyncThunk(
     try {
       // logout user
       thunkAPI.dispatch(logoutUser(message))
-      // // clear jobs value
-      // thunkAPI.dispatch(clearAllJobsState())
-      // // clear job input values
-      // thunkAPI.dispatch(clearValues())
+      // clear Course value
+      thunkAPI.dispatch(clearAllCoursesStats())
+      // clear Course input values
+      thunkAPI.dispatch(clearValues())
       return Promise.resolve()
     } catch (error) {
       return Promise.reject()
@@ -96,10 +98,8 @@ const userSlice = createSlice({
         if(payload){
           toast.success(payload)
         }
-        //back to the default state
       }
     },
-    //lifecycle actions new syntax 
     extraReducers: (builder) => {
         builder
           .addCase(RegisterUser.pending, (state) => {

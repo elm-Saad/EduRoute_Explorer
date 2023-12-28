@@ -1,9 +1,22 @@
 import { CiFolderOn } from "react-icons/ci"
 import { MdOutlinePendingActions,MdOutlineFileDownloadDone } from "react-icons/md"
 import { GrInProgress } from "react-icons/gr"
-
+import { useSelector } from "react-redux"
+import Loading from "./Loading"
 
 const StatisticsWidget = () =>{
+    const { stats ,latest,isLoading} = useSelector((store) => store.allCourses)
+
+
+    const Total = stats.declined + stats.pending + stats.interview
+
+
+    if(isLoading){
+        return <main className=' p-4 w-full bg-white rounded-md shadow-md min-h-80 flex items-center justify-center'>
+                <Loading />
+            </main>
+    }
+
     return <section className=" p-4 w-full bg-white rounded-md shadow-md min-h-80">
         <h2 className="mb-4 font-semibold text-xl">Courses Statistics</h2>
         
@@ -12,7 +25,7 @@ const StatisticsWidget = () =>{
                 <CiFolderOn  
                     className="text-2xl text-blue-400 "
                  />
-                <span className="text-xl font-semibold">1000</span>
+                <span className="text-xl font-semibold">{Total || 0}</span>
                 <p className="text-gray-400">Total</p>
             </div>
             
@@ -20,7 +33,7 @@ const StatisticsWidget = () =>{
                 <MdOutlinePendingActions  
                     className="text-2xl text-yellow-400 "
                 />
-                <span className="text-xl font-semibold">1000</span>
+                <span className="text-xl font-semibold">{ stats.declined || 0}</span>
                 <p className="text-gray-400">Pending</p>
             </div>
 
@@ -28,7 +41,7 @@ const StatisticsWidget = () =>{
                 <MdOutlineFileDownloadDone 
                     className="text-2xl text-green-400 "
                  />
-                <span className="text-xl font-semibold">1000</span>
+                <span className="text-xl font-semibold">{stats.interview || 0}</span>
                 <p className="text-gray-400">Finished</p>
             </div>
 
@@ -36,7 +49,7 @@ const StatisticsWidget = () =>{
                 <GrInProgress  
                     className="text-2xl"
                 />
-                <span className="text-xl font-semibold ">1000</span>
+                <span className="text-xl font-semibold ">{stats.pending || 0}</span>
                 <p className="text-gray-400">in progress</p>
             </div>
 

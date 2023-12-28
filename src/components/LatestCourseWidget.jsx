@@ -1,7 +1,17 @@
-
+import Loading from "./Loading"
+import { useSelector } from "react-redux"
 
 const LatestCourseWidget = () =>{
 
+
+    const { latest,isLoading} = useSelector((store) => store.allCourses)
+
+
+    if(isLoading){
+        return <main className=' p-4 w-full bg-white rounded-md shadow-md min-h-80 flex items-center justify-center'>
+                <Loading />
+            </main>
+    }
     return <section className="p-4 w-full bg-white rounded-md shadow-md min-h-80">
 
             <h2 class="mb-4 font-semibold text-xl">Latest Courses</h2>

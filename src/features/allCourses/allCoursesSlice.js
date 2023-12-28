@@ -20,10 +20,25 @@ const initialState = {
   page: 1,
   stats: {},
   monthlyApplications: [],
+  latest:[],
   ...initialFiltersState,
 }
 
-
+export const getLatestCourses = createAsyncThunk(
+  'allCourses_getLatestCourses',
+  async(_,thunkAPI)=>{
+    try {
+      const resp = await customFetch.get('/jobs?&sort=latest', {
+        headers: {
+          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        },
+      })
+      return resp.data 
+    } catch (error) {
+      return checkForUnauthorizedResponse(error, thunkAPI)
+    }
+  }
+)
 
 
 export const getAllCourses = createAsyncThunk(
@@ -123,6 +138,17 @@ const allCoursesSlice = createSlice({
         state.monthlyApplications = payload.monthlyApplications
       })
       .addCase(showStats.rejected, (state, {payload}) => {
+        state.isLoading = false
+        toast.error(payload)
+      })
+      .addCase(getLatestCourses.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getLatestCourses.fulfilled, (state,{payload}) => {
+        state.isLoading = false
+        state.latest = payload.jobs
+      })
+      .addCase(getLatestCourses.rejected, (state, {payload}) => {
         state.isLoading = false
         toast.error(payload)
       })

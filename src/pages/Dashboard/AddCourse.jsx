@@ -26,11 +26,11 @@ const AddCourse  = () =>{
 
     const {user}= useSelector((store)=> store.user)
     
-    // useEffect(()=>{
-    //     // if the user edit a job 
-        // if(!isEditing)
-    //     dispatch(handleChange({name:'jobLocation',value:user?.location || 'world'}))
-    // },[])
+    useEffect(()=>{
+        // if the user edit a job 
+        if(!isEditing)
+        dispatch(handleChange({name:'jobLocation',value:user?.location || 'world'}))
+    },[])
 
     const handleSubmit = (e)=>{
     e.preventDefault()
@@ -71,7 +71,7 @@ const AddCourse  = () =>{
 
         <form>
             <h3 className='text-xl font-semibold text-center'>{isEditing ? 'Edit course' : 'Add course'}</h3>
-            <div className='py-0 px-10 md:px-28 form-control gap-4'>
+            <div className='py-0 px-10 lg:px-28 form-control gap-4'>
                 {/* name */}
                 <FormRow
                     type='text'

@@ -12,7 +12,7 @@ const SearchContainer = ()=>{
 
     const [LocalSearch,setLocalSearch] = useState('')
 
-    const { isLoading, search, searchStatus, searchType, sort, sortOptions } = useSelector((store) => store.allCourses)
+    const { isLoading, searchStatus, searchType, sort, sortOptions } = useSelector((store) => store.allCourses)
     const { jobTypeOptions, statusOptions } = useSelector((store) => store.course)
 
     const dispatch = useDispatch()
