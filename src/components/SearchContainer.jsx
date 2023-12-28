@@ -2,6 +2,7 @@ import { FormRow, FormRowSelect } from '.'
 import { useSelector, useDispatch } from 'react-redux'
 import { clearFilters,handleChange } from '../features/allCourses/allCoursesSlice'
 import {useState, useMemo} from 'react'
+import { statusOptionsMIM,courseTypeOptionsMIM} from '../utils/mimic'
 
 
 
@@ -55,6 +56,7 @@ const SearchContainer = ()=>{
             value={searchStatus}
             handleChange={handleSearch}
             list={['all', ...statusOptions]}
+            mimicList={['all',...statusOptionsMIM]}
           />
           {/* search by type */}
           <FormRowSelect
@@ -63,6 +65,8 @@ const SearchContainer = ()=>{
             value={searchType}
             handleChange={handleSearch}
             list={['all', ...jobTypeOptions]}
+            mimicList={['all',...courseTypeOptionsMIM]}
+
           />
           {/* sort */}
           <FormRowSelect
@@ -73,7 +77,7 @@ const SearchContainer = ()=>{
           />
         </div>
         <button
-            className='btn btn-block btn-error mt-4'
+            className='btn btn-block btn-neutral mt-4'
             disabled={isLoading}
             onClick={handleSubmit}
           >

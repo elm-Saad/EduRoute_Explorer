@@ -1,7 +1,8 @@
 
 
 
-const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
+const FormRowSelect = ({ labelText, name, value, handleChange, list,mimicList=[] }) => {
+  console.log(mimicList);
     return (
       <div className='form-control gap-2'>
         <label htmlFor={name} className='form-label'>
@@ -17,7 +18,7 @@ const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
           {list.map((itemValue, index) => {
             return (
               <option key={index} value={itemValue}>
-                {itemValue}
+                {!(mimicList.length>0)?itemValue:mimicList[index]}
               </option>
             )
           })}

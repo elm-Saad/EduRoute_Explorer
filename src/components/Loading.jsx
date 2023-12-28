@@ -1,8 +1,8 @@
-// import { Bars } from 'react-loader-spinner'
+import { Bars } from 'react-loader-spinner'
 
 const Loading = ({center}) => {
 
-    return <div className={center ? 'loading loading-center' : 'loading'}></div>
+    return <Bars color='#731bd8' />
 }
   
 export default Loading

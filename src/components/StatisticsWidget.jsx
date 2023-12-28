@@ -5,7 +5,7 @@ import { GrInProgress } from "react-icons/gr"
 
 const StatisticsWidget = () =>{
     return <section className=" p-4 w-full bg-white rounded-md shadow-md min-h-80">
-        <h2 className="mb-4 font-semibold text-xl "> Courses Statistics</h2>
+        <h2 className="mb-4 font-semibold text-xl">Courses Statistics</h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="border rounded-lg p-10 form-control gap-1 items-center">

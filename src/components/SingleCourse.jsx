@@ -1,12 +1,12 @@
-import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-// import JobInfo from './JobInfo'
+import { useDispatch,useSelector } from 'react-redux'
 import moment from 'moment'
+import { statusOptionsMIM, courseTypeOptionsMIM } from '../utils/mimic'
 // import { editJob, deleteJob } from '../features/job/jobSlice';
 
 const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status,})=>{
 
+    const { jobTypeOptions, statusOptions } = useSelector((store) => store.course)
     const dispatch = useDispatch()
 
     const date = moment(createdAt).format('MMM Do, YYYY')
@@ -18,6 +18,24 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
     // const EditJob = ()=>{
     //   dispatch(editJob({editJobId:_id,position,company,jobLocation,jobType,status}))
     // }
+
+
+    const mimicFn = (uniqItem) => {
+      // Combine the arrays original
+      const originalArray = statusOptions.concat(jobTypeOptions)
+  
+      console.log(originalArray)
+      // Combine the arrays mimicked
+      const mimickedArray = statusOptionsMIM.concat(courseTypeOptionsMIM)
+  
+  
+      const indexInOriginalArray = originalArray.indexOf(uniqItem)
+  
+      const newUniqItem = mimickedArray[indexInOriginalArray]
+
+      return newUniqItem
+    }
+
     return (
         <section className='bg-white rounded-md p-5 form-control gap-2 my-2'>
           <div className='flex items-start justify-between mb-2'>
@@ -34,30 +52,30 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
             <span className="text-sm text-gray-400">{date}</span>
           </div>
     
-          <div class="border-t-2 border-b-2 border-indigo-500 p-4">
+          <div class="border-t-2 border-b-2 p-4 my-2">
              {jobLocation}
           </div>
 
           <div class="flex items-center justify-between ">
               <div class="prog bg-eee">
-                <kbd className="kbd kbd-md select-none">{status}</kbd>
+                <kbd className="kbd kbd-md select-none">{mimicFn(status)}</kbd>
               </div>
               <div class="clr-gray fs-14">
-                  {jobType}
+                  {mimicFn(jobType)}
               </div>
 
           </div>
           <div className='flex justify-between mt-4'>
               <Link
                 to='/add'
-                className='btn btn-success'
+                className='btn btn-primary'
                 // onClick={EditJob}
               >
                 Edit
               </Link>
               <button
                 type='button'
-                className='btn btn-error'
+                className='btn btn-neutral'
                 // onClick={DeleteJob}
               >
                 Delete

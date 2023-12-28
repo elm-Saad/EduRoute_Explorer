@@ -20,9 +20,9 @@ const CoursesContainer = ()=>{
 
 
     if(isLoading){
-        return <>
-                <Loading center />
-            </>
+        return <main className='min-h-screen flex items-center justify-center'>
+                <Loading />
+            </main>
         
     }
     if(jobs.length === 0 ){
@@ -35,7 +35,7 @@ const CoursesContainer = ()=>{
     
 
     return <>
-        <h5 className='text-lg font-semibold'>{totalJobs} course{jobs.length > 1 && 's'} found</h5>
+        <h5 className='text-lg font-semibold my-4'>{totalJobs} course{jobs.length > 1 && 's'} found</h5>
         <section 
             className='grid grid-cols-1 lg:grid-cols-2 gap-4'
         >
