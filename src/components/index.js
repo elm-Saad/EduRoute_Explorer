@@ -17,3 +17,9 @@ export {default as ChartsContainer} from './ChartsContainer'
 export {default as StatsContainer} from './StatsContainer'
 export {default as Loading} from './Loading'
 
+export {default as WelcomeWidget} from './WelcomeWidget'
+export {default as StatsWidget} from './StatsWidget'
+export {default as StatisticsWidget} from './StatisticsWidget'
+export {default as LatestCourseWidget} from './LatestCourseWidget'
+
+
