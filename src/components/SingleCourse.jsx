@@ -48,7 +48,7 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
                         </div>
                     </div> 
                 </div>
-              <h4 className="">{position}</h4>
+              <h4 className="text-xl ml-2">{position}</h4>
             </div>
             <span className="text-sm text-gray-400">{date}</span>
           </div>

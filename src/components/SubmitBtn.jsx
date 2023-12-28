@@ -6,7 +6,7 @@ const SubmitBtn = ({isLoading,text='Submit'})=>{
     {
         isLoading?
         <button 
-            className="btn"
+            className="btn btn-neutral"
             disabled={isLoading}
         >
             <span className="loading loading-spinner"></span>
@@ -15,7 +15,7 @@ const SubmitBtn = ({isLoading,text='Submit'})=>{
         :
         <button 
             type='submit'
-            className='btn'
+            className='btn btn-primary'
             disabled={isLoading}
         >
          {text}

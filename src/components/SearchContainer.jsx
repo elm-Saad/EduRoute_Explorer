@@ -46,6 +46,7 @@ const SearchContainer = ()=>{
           <FormRow
             type='text'
             name='search'
+            placeholder='Course name'
             value={LocalSearch}
             handleChange={optimizedDebounce}
           />
