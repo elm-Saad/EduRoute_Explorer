@@ -11,36 +11,11 @@ const SearchContainer = ()=>{
 
     const [LocalSearch,setLocalSearch] = useState('')
 
-    const { isLoading, search, searchStatus, searchType, sort, sortOptions } = useSelector((store) => store.allJobs)
-    const { jobTypeOptions, statusOptions } = useSelector((store) => store.job)
+    const { isLoading, search, searchStatus, searchType, sort, sortOptions } = useSelector((store) => store.allCourses)
+    const { jobTypeOptions, statusOptions } = useSelector((store) => store.course)
 
     const dispatch = useDispatch()
-    const handleSearch = (e) => {
-
-      /**
-       * when using the search filter (search typing) its go to
-       * fetch every time u type which cause a dozen of fetches 
-       * simple solution is return when ever is steel loading then fetch when its done 
-       * but it steel have a UI problem  could be fixed with debounce method
-       */
-      /**V js
-       * //btn that u can click what ever time and just after 
-       * //that last click with 2s delay u console.log('btn click with a debounce')
-       * const btn ....
-       * const debounce = ()=>{
-       *  let TimeoutId // first time it mount 
-       *  return ()=>{
-       *    clearTimeout(timeoutId)// clear the before setTimeout
-       *    timeoutId = setTimeout(()=>{// use A new setTimeout
-       *      console.log('btn click with a debounce')
-       *    },2000)  
-       *  }
-       * }
-       * btn.addEventListener('click',debounce())
-       * 
-       * //=> setTimeout return an id which pass into clearTimeout to clear the set
-       */
-      
+    const handleSearch = (e) => {  
       dispatch(handleChange({name: e.target.name, value:e.target.value}))
     }
     const handleSubmit = (e) => {
@@ -49,7 +24,6 @@ const SearchContainer = ()=>{
         dispatch(clearFilters())
     }
 
-    // not working in react only in v js => solution is useMemo
     const debounce = ()=>{
       let timeoutId
       return (e)=>{
@@ -65,9 +39,8 @@ const SearchContainer = ()=>{
     const optimizedDebounce = useMemo(()=>debounce(),[])
 
     return <>
-        <form className='form'>
-        <h4>search form</h4>
-        <div className='form-center'>
+        <form className='form-control items-center bg-white p-10 rounded-lg shadow-md'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 w-full h-full lg:p-5'>
           {/* search position */}
           <FormRow
             type='text'
@@ -98,14 +71,14 @@ const SearchContainer = ()=>{
             handleChange={handleSearch}
             list={sortOptions}
           />
-          <button
-            className='btn btn-block btn-danger'
+        </div>
+        <button
+            className='btn btn-block btn-error mt-4'
             disabled={isLoading}
             onClick={handleSubmit}
           >
             clear filters
-          </button>
-        </div>
+        </button>
       </form>
     </>
 

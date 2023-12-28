@@ -12,7 +12,7 @@ const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
           value={value}
           id={name}
           onChange={handleChange}
-          className='select select-bordered w-full max-w-xs'
+          className='select select-bordered w-full '
         >
           {list.map((itemValue, index) => {
             return (
