@@ -49,26 +49,24 @@ export const getAllCourses = createAsyncThunk(
     }
   }
 )
-// export const showStats = createAsyncThunk(
-//   'allJobs_showStats',
-//   async (_, thunkAPI) => {
-//     try {
-//       const res = await customFetch.get('/jobs/stats',{
-//         headers: {
-//           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-//         },
-//       })
-//       console.log(res.data)
 
-//       return res.data
-//     } catch (error) {
-//       //base error
-//       // return thunkAPI.rejectWithValue(error.response.data.msg)
-//       //for 401 and base error
-//       return checkForUnauthorizedResponse(error, thunkAPI)
-//     }
-//   }
-// )
+export const showStats = createAsyncThunk(
+  'allCourses_showStats',
+  async (_, thunkAPI) => {
+    try {
+      const res = await customFetch.get('/jobs/stats',{
+        headers: {
+          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        },
+      })
+
+      return res.data
+    } catch (error) {
+      
+      return checkForUnauthorizedResponse(error, thunkAPI)
+    }
+  }
+)
 
 
    
@@ -116,18 +114,18 @@ const allCoursesSlice = createSlice({
         state.isLoading = false
         toast.error(payload)
       })
-      // .addCase(showStats.pending, (state) => {
-      //   state.isLoading = true
-      // })
-      // .addCase(showStats.fulfilled, (state,{payload}) => {
-      //   state.isLoading = false
-      //   state.stats = payload.defaultStats
-      //   state.monthlyApplications = payload.monthlyApplications
-      // })
-      // .addCase(showStats.rejected, (state, {payload}) => {
-      //   state.isLoading = false
-      //   toast.error(payload)
-      // })
+      .addCase(showStats.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(showStats.fulfilled, (state,{payload}) => {
+        state.isLoading = false
+        state.stats = payload.defaultStats
+        state.monthlyApplications = payload.monthlyApplications
+      })
+      .addCase(showStats.rejected, (state, {payload}) => {
+        state.isLoading = false
+        toast.error(payload)
+      })
 },
 })
 

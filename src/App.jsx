@@ -13,11 +13,6 @@ import {
   AddCourse,
 } from './pages/Dashboard'
 
-/**
- * element:<ProtectedRoute>
-      <SharedLayout />
-    </ProtectedRoute>,
- */
 const routes = createBrowserRouter([
   {
     path:'/',

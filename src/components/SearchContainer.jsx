@@ -39,7 +39,7 @@ const SearchContainer = ()=>{
     const optimizedDebounce = useMemo(()=>debounce(),[])
 
     return <>
-        <form className='form-control items-center bg-white p-10 rounded-lg shadow-md'>
+        <form className='form-control items-center bg-white p-5 rounded-lg shadow-md'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 w-full h-full lg:p-5'>
           {/* search position */}
           <FormRow
