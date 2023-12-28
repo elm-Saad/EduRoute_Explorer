@@ -39,7 +39,7 @@ const Profile  = () =>{
         <div className="form-control items-center md:flex-row h-full md:h-[28rem]">    
             <div className="h-1/2 md:h-full w-full md:w-1/2 text-center p-20 rounded-lg shadow-md bg-base-200 flex items-center justify-center">
                 <div>
-                    <div className="avatar placeholder">
+                    <div className="avatar placeholder online">
                         <div className="mask mask-hexagon bg-neutral text-neutral-content rounded-full w-24">
                             <span className="select-none text-3xl uppercase">{(user?.name).slice(0, 2)}</span>
                         </div>
