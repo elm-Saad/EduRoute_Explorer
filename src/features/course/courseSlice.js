@@ -19,7 +19,7 @@ const initialState = {
 
 
 
-export const createJob = createAsyncThunk(
+export const createCourse = createAsyncThunk(
   'course_createCourse',
   async (course, thunkAPI ) =>{
     try {
@@ -57,26 +57,25 @@ export const createJob = createAsyncThunk(
 //       }
 //     }
 // )
-// export const editJobu = createAsyncThunk(
-//   'job_editJob',
-//   async({jobId,job},thunkAPI)=>{
-//     try {
-//       const resp = await customFetch.patch(`/jobs/${jobId}`, job, {
-//         headers: {
-//           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-//         },
-//       })
-//       /** */
-//       thunkAPI.dispatch(clearValues())
-//       return resp.data
-//     } catch (error) {
-//       //base error
-//       // return thunkAPI.rejectWithValue(error.response.data.msg)
-//       //for 401 and base error
-//       return checkForUnauthorizedResponse(error, thunkAPI)
-//     }
-//   }
-// )
+
+
+export const editCourse = createAsyncThunk(
+  'Courses_editCourse',
+  async({jobId,job},thunkAPI)=>{
+    try {
+      const resp = await customFetch.patch(`/jobs/${jobId}`, job, {
+        headers: {
+          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        },
+      })
+      /** */
+      thunkAPI.dispatch(clearValues())
+      return resp.data
+    } catch (error) {
+      return checkForUnauthorizedResponse(error, thunkAPI)
+    }
+  }
+)
 
 
 const allCourseSlice = createSlice({
@@ -93,20 +92,31 @@ const allCourseSlice = createSlice({
           jobLocation: getFromLocalStorage()?.location || '',
         }
       },
-      setEditJob: (state,{payload})=>{
+      setEditCourse: (state,{payload})=>{
         return {...state,isEditing: true,...payload}
       }
     },
     extraReducers: (builder) => {
       builder
-        .addCase(createJob.pending, (state) => {
+        .addCase(createCourse.pending, (state) => {
           state.isLoading = true
         })
-        .addCase(createJob.fulfilled, (state) => {
+        .addCase(createCourse.fulfilled, (state) => {
           state.isLoading = false
           toast.success('course created')
         })
-        .addCase(createJob.rejected, (state, {payload}) => {
+        .addCase(createCourse.rejected, (state, {payload}) => {
+          state.isLoading = false
+          toast.error(payload)
+        })
+        .addCase(editCourse.pending, (state) => {
+          state.isLoading = true
+        })
+        .addCase(editCourse.fulfilled, (state) => {
+          state.isLoading = false
+          toast.success('Course updated')
+        })
+        .addCase(editCourse.rejected, (state, {payload}) => {
           state.isLoading = false
           toast.error(payload)
         })
@@ -118,21 +128,11 @@ const allCourseSlice = createSlice({
         //   state.isLoading = false
         //   toast.error(payload)
         // })
-        // .addCase(editJobu.pending, (state) => {
-        //   state.isLoading = true
-        // })
-        // .addCase(editJobu.fulfilled, (state) => {
-        //   state.isLoading = false
-        //   toast.success('job updated')
-        // })
-        // .addCase(editJobu.rejected, (state, {payload}) => {
-        //   state.isLoading = false
-        //   toast.error(payload)
-        // })
+        
   },
 })
 
 
-export const {handleChange,clearValues,setEditJob} = allCourseSlice.actions
+export const {handleChange,clearValues,setEditCourse} = allCourseSlice.actions
 
 export default allCourseSlice.reducer

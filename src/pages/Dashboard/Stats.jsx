@@ -16,7 +16,9 @@ const Stats  = () =>{
 
 
     if(isLoading){
-        return <Loading center />
+        return <main className='min-h-screen flex items-center justify-center'>
+                <Loading />
+            </main>
     }
 
     return <section className='min-h-screen'>

@@ -23,8 +23,8 @@ const CoursesContainer = ()=>{
         return <main className='min-h-screen flex items-center justify-center'>
                 <Loading />
             </main>
-        
     }
+    
     if(jobs.length === 0 ){
         return  <main className='min-h-screen flex items-center justify-center'>
                 <h2 className='font-semibold text-2xl '>No courses...</h2>

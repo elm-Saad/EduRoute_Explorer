@@ -1,7 +1,7 @@
 import { FormRow, FormRowSelect, SubmitBtn } from '../../components'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import { handleChange,clearValues ,createJob,setEditJob} from '../../features/course/courseSlice'
+import { handleChange,clearValues ,createCourse, editCourse} from '../../features/course/courseSlice'
 import { useEffect } from 'react'
 import { courseTypeOptionsMIM, statusOptionsMIM } from '../../utils/mimic'
 
@@ -40,18 +40,18 @@ const AddCourse  = () =>{
     }
     // Create job || // edit job
     if(isEditing){
-        // dispatch(setEditJob({
-        //     jobId:editJobId,
-        //     job: {
-        //         position,
-        //         company,
-        //         jobLocation,
-        //         jobType,
-        //         status,
-        //     }
-        // }))
+        dispatch(editCourse({
+            jobId:editJobId,
+            job: {
+                position,
+                company,
+                jobLocation,
+                jobType,
+                status,
+            }
+        }))
     }else{
-        dispatch(createJob({ position, company, jobLocation, jobType, status }))
+        dispatch(createCourse({ position, company, jobLocation, jobType, status }))
     }
     }
 
@@ -69,9 +69,9 @@ const AddCourse  = () =>{
       
     return <>
 
-        <form className='form'>
-            <h3 className='text-xl font-semibold '>{isEditing ? 'Edit course' : 'Add course'}</h3>
-            <div className='py-10 px-10 md:px-28 form-control gap-4'>
+        <form>
+            <h3 className='text-xl font-semibold text-center'>{isEditing ? 'Edit course' : 'Add course'}</h3>
+            <div className='py-0 px-10 md:px-28 form-control gap-4'>
                 {/* name */}
                 <FormRow
                     type='text'
@@ -104,7 +104,8 @@ const AddCourse  = () =>{
                     name='status'
                     value={status}
                     handleChange={handleCourseInputs}
-                    list={statusOptionsMIM}
+                    list={statusOptions}
+                    mimicList={statusOptionsMIM}
                 />
                 {/* course time */}
                 <FormRowSelect
@@ -112,21 +113,22 @@ const AddCourse  = () =>{
                     labelText='course time'
                     value={jobType}
                     handleChange={handleCourseInputs}
-                    list={courseTypeOptionsMIM}
+                    list={jobTypeOptions}
+                    mimicList={courseTypeOptionsMIM}
                 />
                 {/* btn container */}
                 
                 <div className='form-control gap-4'>
                     <button
                         type='button'
-                        className='btn btn-block'
+                        className='btn btn-block btn-neutral'
                         onClick={clearCourses}
                     >
                         clear
                     </button>
                     <button
                         type='submit'
-                        className='btn btn-block'
+                        className='btn btn-block btn-primary'
                         onClick={handleSubmit}
                         disabled={isLoading}
                     >

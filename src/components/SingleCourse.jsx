@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
 import moment from 'moment'
 import { statusOptionsMIM, courseTypeOptionsMIM } from '../utils/mimic'
-// import { editJob, deleteJob } from '../features/job/jobSlice';
+import { editCourse, setEditCourse } from '../features/course/courseSlice'
 
 const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status,})=>{
 
@@ -15,9 +15,10 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
     // const DeleteJob = ()=>{
     //   dispatch(deleteJob(_id))
     // }
-    // const EditJob = ()=>{
-    //   dispatch(editJob({editJobId:_id,position,company,jobLocation,jobType,status}))
-    // }
+
+    const EditCourse = ()=>{
+      dispatch(setEditCourse({editJobId:_id,position,company,jobLocation,jobType,status}))
+    }
 
 
     const mimicFn = (uniqItem) => {
@@ -69,7 +70,7 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
               <Link
                 to='/add'
                 className='btn btn-primary'
-                // onClick={EditJob}
+                onClick={EditCourse}
               >
                 Edit
               </Link>
@@ -86,39 +87,3 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
 }
 
 export default SingleCourse
-/**
- *  <header>
-            <div className='main-icon'>{company.charAt(0)}</div>
-            <div className='info'>
-              <h5>{position}</h5>
-              <p>{company}</p>
-            </div>
-          </header>
-          <div className='content'>
-            <div className='content-center'>
-            {/* <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
-            <JobInfo icon={<FaCalendarAlt />} text={date} />
-            <JobInfo icon={<FaBriefcase />} text={jobType} /> ///////
-            job info
-            <div className={`status ${status}`}>{status}</div>
-          </div>
-          <footer>
-            <div className='actions'>
-              <Link
-                to='/add'
-                className='btn edit-btn'
-                // onClick={EditJob}
-              >
-                Edit
-              </Link>
-              <button
-                type='button'
-                className='btn delete-btn'
-                // onClick={DeleteJob}
-              >
-                Delete
-              </button>
-            </div>
-          </footer>
-        </div>
- */
