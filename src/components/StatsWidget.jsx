@@ -2,7 +2,11 @@ import { LineChart, CartesianGrid, XAxis,YAxis,Line,Tooltip,ResponsiveContainer 
 
 const StatsWidget = ({ data }) => {
   console.log(data)
-    return <ResponsiveContainer  width='100%' height={320}>
+    return <ResponsiveContainer
+        className='bg-white rounded-md shadow-md'
+        width='100%'
+        height={320}
+    >
       <LineChart data={data}  >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />

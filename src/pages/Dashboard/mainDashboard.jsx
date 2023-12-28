@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 const Dashboard = ()=>{
     const { monthlyApplications: data } = useSelector((store) => store.allCourses)
 
-    return <section className="bg-red-300 w-full min-h-screen flex items-center justify-center">
+    return <section className="w-full min-h-screen flex items-center justify-center">
         <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-4">
             <WelcomeWidget />
             <StatsWidget data={data} />
