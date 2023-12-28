@@ -35,15 +35,17 @@ const CoursesContainer = ()=>{
     
 
     return <>
-        <h5>{totalJobs} course{jobs.length > 1 && 's'} found</h5>
+        <h5 className='text-lg font-semibold'>{totalJobs} course{jobs.length > 1 && 's'} found</h5>
         <section 
-            className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
+            className='grid grid-cols-1 lg:grid-cols-2 gap-4'
         >
             {jobs.map((job) => {
                 return <SingleCourse key={job._id} {...job} />
             })}
         </section>
+        <section className=' my-10 flex items-center justify-center'>
         {numOfPages > 1 && <PageBtnContainer />}
+        </section>
     </>
 }
 

@@ -2,7 +2,7 @@ import { CoursesContainer, SearchContainer } from '../../components'
 
 const Courses  = () =>{
     return <>
-        {/* <SearchContainer /> */}
+        <SearchContainer />
         <CoursesContainer />
     </>
 }

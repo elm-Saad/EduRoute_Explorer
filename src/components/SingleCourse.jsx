@@ -22,32 +22,47 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
         <section className='bg-white rounded-md p-5 form-control gap-2 my-2'>
           <div className='flex items-start justify-between mb-2'>
             <div className='w-2/3'>
-              <h4 className="">Astro dashboard</h4>
-              <p className="">Astro dashboard projects design and Programming and hosting </p>
+                <div>
+                    <div className="avatar placeholder">
+                        <div className="mask mask-hexagon bg-neutral text-neutral-content rounded-full w-20">
+                            <span className="select-none text-3xl uppercase">{(company).slice(0, 2)}</span>
+                        </div>
+                    </div> 
+                </div>
+              <h4 className="">{position}</h4>
             </div>
             <span className="text-sm text-gray-400">{date}</span>
           </div>
     
-          <div class="team">
-              team member
+          <div class="border-t-2 border-b-2 border-indigo-500 p-4">
+             {jobLocation}
           </div>
 
-          <div class="work d-flex">
-              <span class="fs-13 rad-6 bg-eee">programming</span>
-              <span class="fs-13 rad-6 bg-eee">design</span>
-              <span class="fs-13 rad-6 bg-eee"> hosting</span>
-              <span class="fs-13 rad-6 bg-eee">marketing</span>
-          </div>
-          <div class="info flex-manipulation ">
+          <div class="flex items-center justify-between ">
               <div class="prog bg-eee">
-                  {/* <span style="width:50%"></span> */}
+                <kbd className="kbd kbd-md select-none">{status}</kbd>
               </div>
               <div class="clr-gray fs-14">
-                  {/* <i class="fa-solid fa-dollar-sign"></i> */}
-                  2500
+                  {jobType}
               </div>
 
           </div>
+          <div className='flex justify-between mt-4'>
+              <Link
+                to='/add'
+                className='btn btn-success'
+                // onClick={EditJob}
+              >
+                Edit
+              </Link>
+              <button
+                type='button'
+                className='btn btn-error'
+                // onClick={DeleteJob}
+              >
+                Delete
+              </button>
+            </div>
         </section>
     )
 }

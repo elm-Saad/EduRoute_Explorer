@@ -1,41 +1,41 @@
-// import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { changePage } from '../features/allCourses/allCoursesSlice'
+import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi'
+import { useSelector, useDispatch } from 'react-redux'
+import { changePage } from '../features/allCourses/allCoursesSlice'
 
 const PageBtnContainer = ()=>{
-    // const {numOfPages,page} = useSelector((store)=>store.allJobs)
-    // const dispatch = useDispatch()
+    const {numOfPages,page} = useSelector((store)=>store.allCourses)
+    const dispatch = useDispatch()
 
-    // const pages = Array.from({ length: numOfPages }, (_, index) => {
-    //     return index + 1
-    //   })
+    const pages = Array.from({ length: numOfPages }, (_, index) => {
+        return index + 1
+      })
 
-    // const nextPage = () => {
-    //     let newPage = page + 1
-    //     if(newPage > numOfPages){
-    //         newPage = 1
-    //     }
-    //     dispatch(changePage(newPage))
-    // };
-    // const prevPage = () => {
-    //     let newPage = page - 1
-    //     if (newPage < 1) {
-    //         newPage = numOfPages
-    //     }
-    //     dispatch(changePage(newPage))
-    // }
+    const nextPage = () => {
+        let newPage = page + 1
+        if(newPage > numOfPages){
+            newPage = 1
+        }
+        dispatch(changePage(newPage))
+    };
+    const prevPage = () => {
+        let newPage = page - 1
+        if (newPage < 1) {
+            newPage = numOfPages
+        }
+        dispatch(changePage(newPage))
+    }
 
     return <>
-        {/* <button className='prev-btn' onClick={prevPage}>
+        <div className='join border-4'>
+        <button className='bg-white join-item btn flex items-center justify-center' onClick={prevPage}>
         <HiChevronDoubleLeft />
         prev
         </button>
-        <div className='btn-container'>
         {pages.map((pageNumber) => {
             return (
             <button
                 type='button'
-                className={pageNumber === page ? 'pageBtn active' : 'pageBtn'}
+                className={pageNumber === page ? 'join-item btn btn-primary ' : 'join-item btn bg-white'}
                 key={pageNumber}
                 onClick={()=> dispatch(changePage(pageNumber))}
             >
@@ -43,12 +43,13 @@ const PageBtnContainer = ()=>{
             </button>
             )
         })}
-        </div>
-        <button className='next-btn' onClick={nextPage}>
+         <button className='bg-white join-item btn flex items-center justify-center' onClick={nextPage}>
         next
         <HiChevronDoubleRight />
-        </button> */}
-        btn container
+        </button>
+        </div>
+       
+        
   </>
 }
 
