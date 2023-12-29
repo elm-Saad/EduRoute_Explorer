@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import { LgSidebar,Navbar } from "../../components"//LeftSidebar
+import { LgSidebar,Navbar } from "../../components"
 import { useSelector } from 'react-redux'
 
 const SharedLayout  = () =>{

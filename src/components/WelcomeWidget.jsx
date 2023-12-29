@@ -12,9 +12,9 @@ const WelcomeWidget = () => {
     }
 
     return <section className="w-full bg-white rounded-md shadow-md form-control gap-0 relative min-h-80">
-        <div className="h-1/2 w-full p-4 pb-0">
-            <h2 className="capitalize text-xl font-semibold">welcome</h2>
-            <p className="text-gray-500 mt-1">{user?.name}</p>
+        <div className="h-1/2 w-full p-4 pb-0 bg-custom">
+            <h2 className="capitalize text-2xl font-semibold text-white">welcome</h2>
+            <p className="text-gray-200 text-lg font-medium mt-1">{user?.name}</p>
         </div>
 
         <div className="w-full absolute top-1/3 left-2">
@@ -25,7 +25,7 @@ const WelcomeWidget = () => {
             </div> 
         </div>
         
-        <div className="h-1/2 w-full flex items-end p-4 mt-2 border-t-2">
+        <div className="h-1/2 w-full flex items-end p-4">
            <div className="w-full pt-6">
                 <div className="w-full flex items-center justify-around">
                     <div className="text-lg text-gray-500">{user?.name}</div>
@@ -34,7 +34,7 @@ const WelcomeWidget = () => {
                             Email
                         </a>
                     </div>
-                    <div className="text-lg text-gray-500">{(user?.location).slice(0,7)}</div>
+                    <div className="text-lg text-gray-500">{(user?.location).slice(0,10)}</div>
                 </div>
                 <div className="w-full flex items-end justify-end mt-4">
                     <Link 

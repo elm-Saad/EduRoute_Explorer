@@ -110,7 +110,7 @@ const AddCourse  = () =>{
                 {/* course time */}
                 <FormRowSelect
                     name='jobType'
-                    labelText='course time'
+                    labelText='course duration'
                     value={jobType}
                     handleChange={handleCourseInputs}
                     list={jobTypeOptions}

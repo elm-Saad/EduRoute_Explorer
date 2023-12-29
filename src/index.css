@@ -5,3 +5,11 @@
 .main-color{
     color: #731bd8;
 }
+
+.bg-custom{
+    background-image: url(../src/assests/images/welcome.PNG);
+    background-size: cover;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+
+}

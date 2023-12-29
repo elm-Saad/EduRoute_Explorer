@@ -2,5 +2,5 @@
 
 export const statusOptionsMIM = ['finished', 'pending', 'in progress']
 
-export const courseTypeOptionsMIM = ['_ > 10h', '5h< _ < 10h', '1h < _ < 5h', '_ < 1h']
+export const courseTypeOptionsMIM = ['more then 10h', 'between 5h and 10h', 'between 1h and 5h', 'less then 1h']
 

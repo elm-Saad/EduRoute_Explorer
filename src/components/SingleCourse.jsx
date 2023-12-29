@@ -53,8 +53,8 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
             <span className="text-sm text-gray-400">{date}</span>
           </div>
     
-          <div class="border-t-2 border-b-2 p-4 my-2">
-             {jobLocation}
+          <div class="border-t-2 border-b-2 p-4 my-2 capitalize">
+            become a {jobLocation}
           </div>
 
           <div class="flex items-center justify-between ">

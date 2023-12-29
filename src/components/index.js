@@ -5,7 +5,6 @@ export {default as SubmitBtn} from './SubmitBtn'
 
 
 export {default as LgSidebar} from './LgSidebar'
-export {default as LeftSidebar} from './LeftSidebar'
 export {default as Navbar} from './Navbar'
 export {default as NavLinks} from './NavLinks'
 export {default as FormRowSelect} from './FormRowSelect'
