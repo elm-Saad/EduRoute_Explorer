@@ -85,7 +85,7 @@ const Register = () =>{
           type='submit'
           className='btn'
           disabled={isLoading}
-          onClick={()=> dispatch(LoginUser({ email: 'testUser@test.com', password: 'secret' }))}
+          onClick={()=> dispatch(LoginUser({ email: 'new999@gmail.com', password: 'newnewnew' }))}
         >
           {
           isLoading?
