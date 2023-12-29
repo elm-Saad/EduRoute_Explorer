@@ -69,73 +69,75 @@ const AddCourse  = () =>{
       
     return <>
 
-        <form>
-            <h3 className='text-xl font-semibold text-center'>{isEditing ? 'Edit course' : 'Add course'}</h3>
-            <div className='py-0 px-10 lg:px-28 form-control gap-4'>
-                {/* name */}
-                <FormRow
-                    type='text'
-                    labelText='name'
-                    placeholder='course name'
-                    name='position'
-                    value={position}
-                    handleChange={handleCourseInputs}
-                />
-                {/* instructor */}
-                <FormRow
-                    type='text'
-                    labelText='instructor'
-                    placeholder='instructor'
-                    name='company'
-                    value={company}
-                    handleChange={handleCourseInputs}
-                />
-                {/* Gol */}
-                <FormRow
-                    type='text'
-                    labelText='course gol'
-                    placeholder='React, Javascript, Laravel, C++'
-                    name='jobLocation'
-                    value={jobLocation}
-                    handleChange={handleCourseInputs}
-                />
-                {/* course status */}
-                <FormRowSelect
-                    name='status'
-                    value={status}
-                    handleChange={handleCourseInputs}
-                    list={statusOptions}
-                    mimicList={statusOptionsMIM}
-                />
-                {/* course time */}
-                <FormRowSelect
-                    name='jobType'
-                    labelText='course duration'
-                    value={jobType}
-                    handleChange={handleCourseInputs}
-                    list={jobTypeOptions}
-                    mimicList={courseTypeOptionsMIM}
-                />
-                {/* btn container */}
-                
-                <div className='form-control gap-4'>
-                    <button
-                        type='button'
-                        className='btn btn-block btn-neutral'
-                        onClick={clearCourses}
-                    >
-                        clear
-                    </button>
-                    <button
-                        type='submit'
-                        className='btn btn-block btn-primary'
-                        onClick={handleSubmit}
-                        disabled={isLoading}
-                    >
-                        submit
-                    </button>
+        <form className='min-h-screen w-full flex items-start justify-center'>
+           <div className='w-full h-full'>
+                <h3 className='text-xl font-semibold text-center'>{isEditing ? 'Edit course' : 'Add course'}</h3>
+                <div className='py-0 lg:px-28 form-control gap-4'>
+                    {/* name */}
+                    <FormRow
+                        type='text'
+                        labelText='name'
+                        placeholder='course name'
+                        name='position'
+                        value={position}
+                        handleChange={handleCourseInputs}
+                    />
+                    {/* instructor */}
+                    <FormRow
+                        type='text'
+                        labelText='instructor'
+                        placeholder='instructor'
+                        name='company'
+                        value={company}
+                        handleChange={handleCourseInputs}
+                    />
+                    {/* Purpose */}
+                    <FormRow
+                        type='text'
+                        labelText='Purpose of Course'
+                        placeholder='learn React, Laravel, C++'
+                        name='jobLocation'
+                        value={jobLocation}
+                        handleChange={handleCourseInputs}
+                    />
+                    {/* course status */}
+                    <FormRowSelect
+                        name='status'
+                        value={status}
+                        handleChange={handleCourseInputs}
+                        list={statusOptions}
+                        mimicList={statusOptionsMIM}
+                    />
+                    {/* course time */}
+                    <FormRowSelect
+                        name='jobType'
+                        labelText='course duration'
+                        value={jobType}
+                        handleChange={handleCourseInputs}
+                        list={jobTypeOptions}
+                        mimicList={courseTypeOptionsMIM}
+                    />
+                    {/* btn container */}
+                    
+                    <div className='form-control gap-4'>
+                        <button
+                            type='button'
+                            className='btn btn-block btn-neutral'
+                            onClick={clearCourses}
+                        >
+                            clear
+                        </button>
+                        <button
+                            type='submit'
+                            className='btn btn-block btn-primary'
+                            onClick={handleSubmit}
+                            disabled={isLoading}
+                        >
+                            submit
+                        </button>
+                    </div>
                 </div>
-            </div>
+           </div>
         </form>
     </>
 }
