@@ -1,13 +1,19 @@
 import { CiFolderOn } from "react-icons/ci"
 import { MdOutlinePendingActions,MdOutlineFileDownloadDone } from "react-icons/md"
 import { GrInProgress } from "react-icons/gr"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Loading from "./Loading"
+import { useEffect } from 'react'
+import { showStats } from "../features/allCourses/allCoursesSlice"
 
 const StatisticsWidget = () =>{
     
     const { stats ,isLoading} = useSelector((store) => store.allCourses)
+    const dispatch = useDispatch()
 
+    useEffect(()=>{
+        dispatch(showStats())
+    },[])
 
     const Total = stats.declined + stats.pending + stats.interview
 

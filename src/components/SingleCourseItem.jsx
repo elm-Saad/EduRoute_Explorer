@@ -5,7 +5,7 @@ const SingleCourseItem = ({position,company,createdAt})=>{
 
     const date = moment(createdAt).format('MMM Do, YYYY')
 
-    return <div class="flex items-center justify-between border-b-2 p-4">
+    return <div class="flex items-center justify-between border-b-2 p-2">
 
     <div class="info">
         <h3>{position}</h3>

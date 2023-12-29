@@ -1,9 +1,7 @@
 import { FaAlignJustify} from 'react-icons/fa6'
 import { FaUserCircle, FaCaretDown} from 'react-icons/fa'
 import { FaCaretLeft,FaCaretRight } from "react-icons/fa6";
-
-import Logo from './Logo'
-// import { useState } from 'react'
+import logo from '../assests/images/logo.png'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleSidebar, clearStore } from '../features/user/userSlice'
@@ -16,7 +14,7 @@ const Navbar = ()=>{
         dispatch(toggleSidebar())
     }
     
-    return <div className="h-20 flex bg-white items-center justify-between shadow">
+    return <div className="h-20 flex bg-white items-center justify-between shadow pr-2">
     {/**Toggle icon */}
 
     <div className='invisible md:visible'>
@@ -35,8 +33,13 @@ const Navbar = ()=>{
       </label>
     </div>
     {/** center Logo/text */}
-    <div>
-      <Logo />
+    <div className='flex items-center justify-start gap-2'>
+        <img src={logo} alt='EduRoute logo' className='w-8' />
+        <span 
+                className="hidden md:block text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r to-primary from-sky-500"
+            >
+                EduRoute
+        </span>
     </div>
     {/** user Account */}
     <div className="dropdown dropdown-end">
