@@ -14,13 +14,13 @@ const WelcomeWidget = () => {
     return <section className="w-full bg-white rounded-md shadow-md form-control gap-0 relative min-h-80">
         <div className="h-1/2 w-full p-4 pb-0 bg-custom">
             <h2 className="capitalize text-2xl font-semibold text-white">welcome</h2>
-            <p className="text-gray-200 text-lg font-medium mt-1">{user?.name}</p>
+            <p className="text-gray-100 text-xl font-medium mt-1">{user?.name}</p>
         </div>
 
         <div className="w-full absolute top-1/3 left-2">
             <div className="avatar placeholder online">
-                <div className="mask mask-hexagon bg-neutral text-neutral-content rounded-full w-24">
-                    <span className="select-none text-3xl uppercase">{(user?.name).slice(0, 2)}</span>
+                <div className="mask mask-hexagon bg-neutral text-neutral-content rounded-full w-20 md:w-24">
+                    <span className="select-none text-2xl md:text-3xl uppercase">{(user?.name).slice(0, 2)}</span>
                 </div>
             </div> 
         </div>

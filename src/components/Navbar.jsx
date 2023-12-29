@@ -34,7 +34,7 @@ const Navbar = ()=>{
     </div>
     {/** center Logo/text */}
     <div className='flex items-center justify-start gap-2'>
-        <img src={logo} alt='EduRoute logo' className='w-8' />
+        <img src={logo} alt='logo' className='w-8' />
         <span 
                 className="hidden md:block text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r to-primary from-sky-500"
             >
@@ -43,8 +43,8 @@ const Navbar = ()=>{
     </div>
     {/** user Account */}
     <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn m-1">
-        <FaUserCircle className='text-xl' />
+      <div tabIndex={0} role="button" className="btn">
+        <FaUserCircle className='text-2xl text-primary' />
         {user?.name}
         <FaCaretDown />
       </div>
@@ -52,7 +52,7 @@ const Navbar = ()=>{
         <li>
           <button
             type='button'
-            className='dropdown-btn'
+            className='dropdown-btn capitalize'
             onClick={() => {
               dispatch(clearStore('Logging out...'))
             }}

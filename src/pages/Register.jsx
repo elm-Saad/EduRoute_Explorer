@@ -39,10 +39,6 @@ const Register = () =>{
           toast.error('Please Fill Out All Fields')
           return
         }
-        // if(isMember){
-        //   dispatch(LoginUser({email,password}))
-        //   return
-        // }
         dispatch(RegisterUser({name,email,password}))
     }
 
@@ -56,9 +52,9 @@ const Register = () =>{
       }
     }, [user])
 
-    return <section className='h-screen grid place-items-center'>
+    return <section className='h-screen grid place-items-center bg-base-200 w-full'>
     <form 
-      className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-2'
+      className='card max-w-[95%] w-full md:w-96 p-4 md:p-8 bg-base-100 shadow-lg flex flex-col gap-y-2'
       onSubmit={handleSubmit}
     >
       <h4 className='text-center text-3xl font-bold'>Register</h4>
@@ -85,15 +81,6 @@ const Register = () =>{
       />
       
       <SubmitBtn isLoading={isLoading}/>
-
-      {/* <button 
-        type='button'
-        className='btn btn-block btn-hipster'
-        disabled={isLoading}
-        onClick={()=> dispatch(LoginUser({ email: 'testUser@test.com', password: 'secret' }))}
-      >
-        {isLoading?'Loading...':'Demo App'}
-      </button> */}
       <button 
           type='submit'
           className='btn'

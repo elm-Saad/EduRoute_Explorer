@@ -8,7 +8,7 @@ const StatsContainer = ()=>{
     const { user } = useSelector((store)=> store.user)
     
     return <section className='flex items-center justify-center'>
-        <div className="stats shadow">
+        <div className="stats stats-vertical sm:stats-horizontal shadow">
 
           <div className="stat">
             <div className="stat-figure text-primary">

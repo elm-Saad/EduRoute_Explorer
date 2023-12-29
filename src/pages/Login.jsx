@@ -54,9 +54,9 @@ const Login = () =>{
       }
     }, [user])
 
-    return <section className='h-screen grid place-items-center'>
-    <form 
-      className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
+    return <section className='h-screen grid place-items-center bg-base-200 w-full'>
+    <form
+      className='card max-w-[95%] w-full md:w-96 p-4 md:p-8 bg-base-100 shadow-lg flex flex-col gap-y-2'
       onSubmit={handleSubmit}
     >
       <h4 className='text-center text-3xl font-bold'>Login</h4>
