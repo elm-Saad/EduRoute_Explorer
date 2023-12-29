@@ -34,7 +34,7 @@ const Profile  = () =>{
     }
 
 
-    return <>
+    return <section className='min-h-[500px]'>
       
         <div className="form-control items-center md:flex-row h-full md:h-[28rem]">    
             <div className="h-1/2 md:h-full w-full md:w-1/2 text-center p-20 rounded-lg shadow-md bg-white bg-custom flex items-center justify-center">
@@ -79,6 +79,7 @@ const Profile  = () =>{
                     <FormRow
                         type='text'
                         labelText='role'
+                        placeholder='current role'
                         name='location'
                         value={userData.location}
                         handleChange={handleChange}
@@ -95,6 +96,6 @@ const Profile  = () =>{
                 
             </form>
         </div>
-  </>
+  </section>
 }
 export default Profile 
