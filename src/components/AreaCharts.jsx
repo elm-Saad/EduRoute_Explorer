@@ -2,7 +2,6 @@ import {ResponsiveContainer,AreaChart,Area,XAxis,YAxis,CartesianGrid,Tooltip} fr
 
 
 const AreaCharts = ({data})=>{
-  console.log(data.length)
     return <ResponsiveContainer width='100%' height={300}>
     <AreaChart data={data} margin={{ top: 50 }}>
       <CartesianGrid strokeDasharray='3 3' />

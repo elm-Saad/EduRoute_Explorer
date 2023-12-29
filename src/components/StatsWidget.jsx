@@ -1,7 +1,6 @@
 import { LineChart, CartesianGrid, XAxis,YAxis,Line,Tooltip,ResponsiveContainer } from 'recharts'
 
 const StatsWidget = ({ data }) => {
-  console.log(data)
     return <ResponsiveContainer
         className='bg-white rounded-md shadow-md'
         width='100%'

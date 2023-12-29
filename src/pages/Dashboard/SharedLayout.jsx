@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 const SharedLayout  = () =>{
 
     const {isSidebarOpen} = useSelector((store)=>store.user)
-    console.log(isSidebarOpen);
     return <main className='w-full min-h-screen flex justify-center'>
         <article className="max-w-[1400px] w-full flex">
           

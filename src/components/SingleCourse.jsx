@@ -26,7 +26,6 @@ const SingleCourse = ({_id,position,company,jobLocation,jobType,createdAt,status
       // Combine the arrays original
       const originalArray = statusOptions.concat(jobTypeOptions)
   
-      console.log(originalArray)
       // Combine the arrays mimicked
       const mimickedArray = statusOptionsMIM.concat(courseTypeOptionsMIM)
   

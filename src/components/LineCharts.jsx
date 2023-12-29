@@ -1,7 +1,6 @@
 import { LineChart, CartesianGrid, XAxis,YAxis,Line,Tooltip,ResponsiveContainer } from 'recharts'
 
 const LineCharts = ({ data }) => {
-  console.log(data)
     return <ResponsiveContainer  width='100%' height={300}>
       <LineChart data={data}  >
         <CartesianGrid strokeDasharray="3 3" />

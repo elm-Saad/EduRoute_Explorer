@@ -2,7 +2,6 @@
 
 
 const FormRowSelect = ({ labelText, name, value, handleChange, list,mimicList=[] }) => {
-  console.log(mimicList);
     return (
       <div className='form-control gap-2'>
         <label htmlFor={name} className='form-label'>

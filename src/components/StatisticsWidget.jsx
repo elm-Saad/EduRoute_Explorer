@@ -5,16 +5,17 @@ import { useSelector } from "react-redux"
 import Loading from "./Loading"
 
 const StatisticsWidget = () =>{
-    const { stats ,latest,isLoading} = useSelector((store) => store.allCourses)
+    
+    const { stats ,isLoading} = useSelector((store) => store.allCourses)
 
 
     const Total = stats.declined + stats.pending + stats.interview
 
 
     if(isLoading){
-        return <main className=' p-4 w-full bg-white rounded-md shadow-md min-h-80 flex items-center justify-center'>
+        return <section className=' p-4 w-full bg-white rounded-md shadow-md min-h-80 flex items-center justify-center'>
                 <Loading />
-            </main>
+            </section>
     }
 
     return <section className=" p-4 w-full bg-white rounded-md shadow-md min-h-80">
